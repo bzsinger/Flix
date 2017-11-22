@@ -21,7 +21,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         tableView.dataSource = self
         // set up cells to automatically resize
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 140
+        tableView.estimatedRowHeight = 180
 
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=" + APIKey)!
         
