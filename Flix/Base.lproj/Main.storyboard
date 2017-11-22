@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,30 +30,43 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="239" id="ZhO-aF-Oyx" customClass="MovieCell" customModule="Flix" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="239"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZhO-aF-Oyx" id="HxG-4Q-g3e">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="ZhO-aF-Oyx" id="HxG-4Q-g3e">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="238.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thor: Ragnarok" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQO-qL-S1i">
-                                                    <rect key="frame" x="178" y="16" width="189" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Thor: Ragnarok" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQO-qL-S1i">
+                                                    <rect key="frame" x="162" y="16" width="197" height="24"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBC-F1-1dl">
-                                                    <rect key="frame" x="178" y="48" width="189" height="177"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBC-F1-1dl">
+                                                    <rect key="frame" x="162" y="48" width="197" height="20"/>
                                                     <string key="text">Thor is imprisoned on the other side of the universe and finds himself in a race against time to get back to Asgard to stop Ragnarok, the destruction of his homeworld and the end of Asgardian civilization, at the hands of an all-powerful new threat, the ruthless Hela.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nOf-pc-Jxu">
-                                                    <rect key="frame" x="8" y="19" width="162" height="209"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nOf-pc-Jxu">
+                                                    <rect key="frame" x="0.0" y="16" width="154" height="209"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="154" id="Ab5-kx-qgs"/>
+                                                        <constraint firstAttribute="height" constant="209" id="VEL-0q-nLQ"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eQO-qL-S1i" firstAttribute="top" secondItem="nOf-pc-Jxu" secondAttribute="top" id="02d-Un-Yjj"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="nOf-pc-Jxu" secondAttribute="bottom" constant="8" id="0pZ-UL-bBp"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="nOf-pc-Jxu" secondAttribute="leading" constant="8" id="1DJ-6U-EA3"/>
+                                                <constraint firstItem="eQO-qL-S1i" firstAttribute="leading" secondItem="nOf-pc-Jxu" secondAttribute="trailing" constant="8" id="7yc-F8-LQu"/>
+                                                <constraint firstItem="aBC-F1-1dl" firstAttribute="top" secondItem="eQO-qL-S1i" secondAttribute="bottom" constant="8" id="877-Sq-Fjh"/>
+                                                <constraint firstItem="nOf-pc-Jxu" firstAttribute="top" secondItem="HxG-4Q-g3e" secondAttribute="topMargin" constant="8" id="BKa-yp-sOR"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eQO-qL-S1i" secondAttribute="trailing" constant="8" id="T71-FQ-5Dq"/>
+                                                <constraint firstItem="aBC-F1-1dl" firstAttribute="trailing" secondItem="eQO-qL-S1i" secondAttribute="trailing" id="UE4-bD-A49"/>
+                                                <constraint firstItem="aBC-F1-1dl" firstAttribute="leading" secondItem="eQO-qL-S1i" secondAttribute="leading" id="kem-5P-VCA"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="aBC-F1-1dl" secondAttribute="bottom" constant="8" id="nDm-Ep-oY9"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="overviewLabel" destination="aBC-F1-1dl" id="ZsH-ww-NQj"/>
