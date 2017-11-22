@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3B5143431FC5F27C00F9F9CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5143421FC5F27C00F9F9CD /* AppDelegate.swift */; };
-		3B5143451FC5F27C00F9F9CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5143441FC5F27C00F9F9CD /* ViewController.swift */; };
 		3B5143481FC5F27C00F9F9CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5143461FC5F27C00F9F9CD /* Main.storyboard */; };
 		3B51434A1FC5F27C00F9F9CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B5143491FC5F27C00F9F9CD /* Assets.xcassets */; };
 		3B51434D1FC5F27C00F9F9CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B51434B1FC5F27C00F9F9CD /* LaunchScreen.storyboard */; };
 		3B5143581FC5F27C00F9F9CD /* FlixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5143571FC5F27C00F9F9CD /* FlixTests.swift */; };
 		3B5143631FC5F27C00F9F9CD /* FlixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5143621FC5F27C00F9F9CD /* FlixUITests.swift */; };
+		3B5143711FC5FD0D00F9F9CD /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5143701FC5FD0D00F9F9CD /* NowPlayingViewController.swift */; };
+		3B5143751FC5FE8400F9F9CD /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5143741FC5FE8400F9F9CD /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,6 @@
 /* Begin PBXFileReference section */
 		3B51433F1FC5F27C00F9F9CD /* Flix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B5143421FC5F27C00F9F9CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3B5143441FC5F27C00F9F9CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3B5143471FC5F27C00F9F9CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B5143491FC5F27C00F9F9CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B51434C1FC5F27C00F9F9CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +47,8 @@
 		3B51435E1FC5F27C00F9F9CD /* FlixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B5143621FC5F27C00F9F9CD /* FlixUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlixUITests.swift; sourceTree = "<group>"; };
 		3B5143641FC5F27C00F9F9CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B5143701FC5FD0D00F9F9CD /* NowPlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
+		3B5143741FC5FE8400F9F9CD /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +99,13 @@
 		3B5143411FC5F27C00F9F9CD /* Flix */ = {
 			isa = PBXGroup;
 			children = (
+				3B5143701FC5FD0D00F9F9CD /* NowPlayingViewController.swift */,
 				3B5143421FC5F27C00F9F9CD /* AppDelegate.swift */,
-				3B5143441FC5F27C00F9F9CD /* ViewController.swift */,
 				3B5143461FC5F27C00F9F9CD /* Main.storyboard */,
 				3B5143491FC5F27C00F9F9CD /* Assets.xcassets */,
 				3B51434B1FC5F27C00F9F9CD /* LaunchScreen.storyboard */,
 				3B51434E1FC5F27C00F9F9CD /* Info.plist */,
+				3B5143741FC5FE8400F9F9CD /* APIKey.swift */,
 			);
 			path = Flix;
 			sourceTree = "<group>";
@@ -262,7 +265,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B5143451FC5F27C00F9F9CD /* ViewController.swift in Sources */,
+				3B5143711FC5FD0D00F9F9CD /* NowPlayingViewController.swift in Sources */,
+				3B5143751FC5FE8400F9F9CD /* APIKey.swift in Sources */,
 				3B5143431FC5F27C00F9F9CD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
