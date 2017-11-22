@@ -19,6 +19,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         
         tableView.dataSource = self
+        // set up cells to automatically resize
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
 
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=" + APIKey)!
         
@@ -59,7 +62,10 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         
         let movie = movies[indexPath.row]
         cell.titleLabel.text = movie["title"] as? String
+        cell.titleLabel.sizeToFit()
+        
         cell.overviewLabel.text = movie["overview"] as? String
+        cell.overviewLabel.sizeToFit()
         
         let posterPathString = movie["poster_path"] as! String
         
@@ -69,7 +75,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         
         let posterURL = URL(string: baseURLString + posterPathString)!
         
-        cell.imageView?.af_setImage(withURL: posterURL)
+        cell.posterImageView?.af_setImage(withURL: posterURL)
         
         return cell
     }
