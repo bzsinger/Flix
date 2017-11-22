@@ -6,6 +6,7 @@ target 'Flix' do
   use_frameworks!
 
   pod 'AlamofireImage', '~> 3.1’
+  pod 'PKHUD', '~> 5.0'
 
   target 'FlixTests' do
     inherit! :search_paths
