@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+import PKHUD
 
 class NowPlayingViewController: UIViewController, UITableViewDataSource {
 
@@ -30,16 +31,24 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         
         //add refreshControl at top
         tableView.insertSubview(refreshControl, at: 0)
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+    
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        PKHUD.sharedHUD.show()
         
         fetchMovies()
-
     }
     
     func didPullToRefresh(_ refreshControl: UIRefreshControl) {
-        fetchMovies()
+        fetchMovies(pullToRefresh: true)
     }
     
-    func fetchMovies() {
+    func fetchMovies(pullToRefresh: Bool = false) {
+        
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=" + APIKey)!
         
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
@@ -64,8 +73,12 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
                 // so reload data once we get it
                 self.tableView.reloadData()
                 
-                // tell refreshControl to stop refreshing
-                self.refreshControl.endRefreshing()
+                if pullToRefresh {
+                    // tell refreshControl to stop refreshing
+                    self.refreshControl.endRefreshing()
+                } else {
+                    PKHUD.sharedHUD.hide(afterDelay: 1)
+                }
             }
         }
         
