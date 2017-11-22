@@ -15,14 +15,31 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     
     var movies: [[String: Any]] = []
     
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(NowPlayingViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         tableView.dataSource = self
         // set up cells to automatically resize
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 180
+        
+        //add refreshControl at top
+        tableView.insertSubview(refreshControl, at: 0)
+        
+        fetchMovies()
 
+    }
+    
+    func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        fetchMovies()
+    }
+    
+    func fetchMovies() {
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=" + APIKey)!
         
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
@@ -46,6 +63,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
                 // ViewController sets up much faster than network gets back,
                 // so reload data once we get it
                 self.tableView.reloadData()
+                
+                // tell refreshControl to stop refreshing
+                self.refreshControl.endRefreshing()
             }
         }
         
