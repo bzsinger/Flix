@@ -24,6 +24,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         refreshControl.addTarget(self, action: #selector(NowPlayingViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         tableView.dataSource = self
+        // set up cells to automatically resize
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 180
         
         //add refreshControl at top
         tableView.insertSubview(refreshControl, at: 0)
@@ -79,7 +82,10 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         
         let movie = movies[indexPath.row]
         cell.titleLabel.text = movie["title"] as? String
+        cell.titleLabel.sizeToFit()
+        
         cell.overviewLabel.text = movie["overview"] as? String
+        cell.overviewLabel.sizeToFit()
         
         let posterPathString = movie["poster_path"] as! String
         
@@ -89,7 +95,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         
         let posterURL = URL(string: baseURLString + posterPathString)!
         
-        cell.imageView?.af_setImage(withURL: posterURL)
+        cell.posterImageView?.af_setImage(withURL: posterURL)
         
         return cell
     }
