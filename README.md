@@ -34,13 +34,15 @@ Please list two areas of the assignment you'd like to **discuss further with you
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+
 <img src='https://i.imgur.com/PdPbVwo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+* Accidentally used cell's imageView instead of posterImageView. (fixed)
+* Getting warning after making cell size dependent on imageView and label. (open)
 
 ## License
 
