@@ -8,7 +8,7 @@
 
 import UIKit
 import AlamofireImage
-import PKHUD
+import MBProgressHUD
 
 class NowPlayingViewController: UIViewController, UITableViewDataSource {
 
@@ -31,16 +31,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         
         //add refreshControl at top
         tableView.insertSubview(refreshControl, at: 0)
-        PKHUD.sharedHUD.contentView = PKHUDProgressView()
-    
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        PKHUD.sharedHUD.show()
         
         fetchMovies()
+    
     }
     
     func didPullToRefresh(_ refreshControl: UIRefreshControl) {
@@ -48,6 +41,10 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     }
     
     func fetchMovies(pullToRefresh: Bool = false) {
+        
+        if !pullToRefresh {
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+        }
         
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=" + APIKey)!
         
@@ -77,7 +74,8 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
                     // tell refreshControl to stop refreshing
                     self.refreshControl.endRefreshing()
                 } else {
-                    PKHUD.sharedHUD.hide(afterDelay: 1)
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    
                 }
             }
         }
@@ -118,14 +116,18 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-    // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let destinationViewController = segue.destination as! DetailViewController
+        
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)
+        
+        if let indexPath = indexPath {
+            destinationViewController.movie = movies[indexPath.row]
+        }
+        
+        tableView.deselectRow(at: indexPath!, animated: true)
     }
-    */
 
 }
