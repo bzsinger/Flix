@@ -2,17 +2,17 @@ PODS:
   - Alamofire (4.3.0)
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
-  - PKHUD (5.0.0)
+  - MBProgressHUD (1.1.0)
 
 DEPENDENCIES:
   - AlamofireImage (~> 3.1)
-  - PKHUD (~> 5.0)
+  - MBProgressHUD (~> 1.1.0)
 
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
-  PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
 
-PODFILE CHECKSUM: 3999879831fe480df9482d2823123e169cf99626
+PODFILE CHECKSUM: 630ab1c5794cf26739c4385256a2e973c1499c78
 
 COCOAPODS: 1.2.0
