@@ -1,14 +1,14 @@
 # Project 2 - Flix
 
-**Name of your app** is a movies app displaying box office and top rental DVDs using [The Movie Database API](https://developers.themoviedb.org/3).
+Flix is a movies app displaying box office and top rental DVDs using [The Movie Database API](https://developers.themoviedb.org/3).
 
-Time spent: **X** hours spent in total
+Time spent: 0.75 hours spent in total
 
 ## User Stories
 
 The following **required** functionality is completed:
 
-- [ ] User can tap a cell to see a detail view (+5pts)
+- [X] User can tap a cell to see a detail view (+5pts)
 - [ ] User can tap a tab bar button to view a grid layout of Movie Posters using a CollectionView (+5pts)
 
 The following **optional** features are implemented:
@@ -26,8 +26,8 @@ The following **optional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Clever UI designs for the DetailViewController page
+2. Best pods to integrate into project
 
 ## Video Walkthrough
 
