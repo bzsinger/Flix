@@ -117,7 +117,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yp-f4-6TU">
-                                <rect key="frame" x="16" y="438" width="344" height="221"/>
+                                <rect key="frame" x="16" y="438" width="344" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">Thor is imprisoned on the other side of the universe and finds himself in a race against time to get back to Asgard to stop Ragnarok, the destruction of his homeworld and the end of Asgardian civilization, at the hands of an all-powerful new threat, the ruthless Hela.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -144,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tnK-od-ibu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2727.1999999999998" y="36.431784107946029"/>
+            <point key="canvasLocation" x="1964" y="787.55622188905556"/>
         </scene>
         <!--Now Playing-->
         <scene sceneID="QOl-Ub-DFY">
@@ -165,7 +165,7 @@
             </objects>
             <point key="canvasLocation" x="1024.8" y="37.331334332833585"/>
         </scene>
-        <!--Superhero View Controller-->
+        <!--Superhero Movies-->
         <scene sceneID="M80-lL-odi">
             <objects>
                 <viewController id="i0c-R4-Fww" customClass="SuperheroViewController" customModule="Flix" customModuleProvider="target" sceneMemberID="viewController">
@@ -181,28 +181,29 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BsT-dm-nbx">
-                                    <size key="itemSize" width="182" height="271"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="BsT-dm-nbx">
+                                    <size key="itemSize" width="125" height="221"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PosterCell" id="hXl-JK-J7m" customClass="PosterCell" customModule="Flix" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="182" height="271"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="221"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="182" height="271"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="221"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R1y-1b-FMe">
-                                                    <rect key="frame" x="0.0" y="0.0" width="182" height="271"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R1y-1b-FMe">
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="221"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <connections>
                                             <outlet property="posterImageView" destination="R1y-1b-FMe" id="hzk-K7-tzm"/>
+                                            <segue destination="JNf-6x-XVj" kind="show" id="jfW-ui-63N"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -210,7 +211,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Qh7-sz-d0z"/>
+                    <navigationItem key="navigationItem" title="Superhero Movies" id="Qh7-sz-d0z"/>
                     <connections>
                         <outlet property="collectionView" destination="6o4-MG-6Gs" id="aa8-qJ-JQM"/>
                     </connections>
@@ -261,4 +262,7 @@
         <image name="now_playing_tabbar_item" width="21" height="21"/>
         <image name="superhero_tabbar_item" width="21" height="23"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="BXz-cm-qoF"/>
+    </inferredMetricsTieBreakers>
 </document>

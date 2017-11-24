@@ -20,6 +20,16 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
 
         collectionView.dataSource = self
         
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        let cellsPerLine: CGFloat = 2
+        
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = layout.minimumInteritemSpacing
+        
+        let interItemSpacingTotal = layout.minimumInteritemSpacing * (cellsPerLine - 1)
+        let cellWidth = (collectionView.frame.size.width - interItemSpacingTotal) / cellsPerLine
+        layout.itemSize = CGSize(width: cellWidth, height: cellWidth * 3 / 2)
+        
         fetchMovies()
     }
     
@@ -48,7 +58,7 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
         
         MBProgressHUD.showAdded(to: self.view, animated: true)
         
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=" + APIKey)!
+        let url = URL(string: "https://api.themoviedb.org/3/movie/141052/similar?api_key=" + APIKey)!
         
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         
@@ -86,14 +96,15 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let destinationViewController = segue.destination as! DetailViewController
+        
+        let cell = sender as! UICollectionViewCell
+        let indexPath = collectionView.indexPath(for: cell)
+        
+        if let indexPath = indexPath {
+            destinationViewController.movie = movies[indexPath.row]
+        }
     }
-    */
 
 }
