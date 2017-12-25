@@ -13,7 +13,7 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var movies: [[String: Any]] = []
+    var movies: [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,15 +41,7 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PosterCell", for: indexPath) as! PosterCell
         let movie = movies[indexPath.item]
         
-        let posterPathString = movie["poster_path"] as? String
-        
-        if let posterPathString = posterPathString {
-            let baseURLString = "https://image.tmdb.org/t/p/w500"
-            
-            let posterURL = URL(string: baseURLString + posterPathString)!
-            
-            cell.posterImageView.af_setImage(withURL: posterURL)
-        }
+        cell.posterImageView.af_setImage(withURL: movie.posterURL)
         return cell
     }
     
@@ -76,7 +68,7 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
                 // because !, will crash if exception thrown
                 // cast as dictionary, String: Any
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                self.movies = dataDictionary["results"] as! [[String: Any]]
+                self.movies = Movie.movies(dictionaries: dataDictionary["results"] as! [[String: Any]])
                 
                 // ViewController sets up much faster than network gets back,
                 // so reload data once we get it

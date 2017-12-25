@@ -12,8 +12,8 @@ class Movie {
     var title: String
     var overview: String
     var releaseDate: String
-    var posterURL: URL?
-    var backdropURL: URL?
+    var posterURL: URL!
+    var backdropURL: URL!
     
     init(dictionary: [String: Any]) {
         title = dictionary["title"] as? String ?? "No title"
@@ -26,7 +26,18 @@ class Movie {
         let posterPathString = dictionary["poster_path"] as! String
         posterURL = URL(string: baseURLString + posterPathString)!
         
-        let backdropPathString = dictionary["backdrop_path"] as! String
-        backdropURL = URL(string: baseURLString + backdropPathString)!
+        if let backdropPathString = dictionary["backdrop_path"] as? String {
+            backdropURL = URL(string: baseURLString + backdropPathString)!
+        } 
+    }
+    
+    class func movies(dictionaries: [[String: Any]]) -> [Movie] {
+        var movies: [Movie] = []
+        for dictionary in dictionaries {
+            let movie = Movie(dictionary: dictionary)
+            movies.append(movie)
+        }
+        
+        return movies
     }
 }

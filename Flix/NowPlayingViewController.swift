@@ -14,7 +14,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var movies: [[String: Any]] = []
+    var movies: [Movie] = []
     
     var refreshControl: UIRefreshControl!
     
@@ -64,7 +64,13 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
                 // because !, will crash if exception thrown
                 // cast as dictionary, String: Any
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                self.movies = dataDictionary["results"] as! [[String: Any]]
+                let movieDictionaries = dataDictionary["results"] as! [[String: Any]]
+                
+                self.movies = []
+                for dictionary in movieDictionaries {
+                    let movie = Movie(dictionary: dictionary)
+                    self.movies.append(movie)
+                }
                 
                 // ViewController sets up much faster than network gets back,
                 // so reload data once we get it
@@ -92,21 +98,13 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
         
         let movie = movies[indexPath.row]
-        cell.titleLabel.text = movie["title"] as? String
+        cell.titleLabel.text = movie.title
         cell.titleLabel.sizeToFit()
         
-        cell.overviewLabel.text = movie["overview"] as? String
+        cell.overviewLabel.text = movie.overview
         cell.overviewLabel.sizeToFit()
         
-        let posterPathString = movie["poster_path"] as! String
-        
-        // alternatively can do a call to configuration to get all information
-        // https://developers.themoviedb.org/3/configuration/get-api-configuration
-        let baseURLString = "https://image.tmdb.org/t/p/w500"
-        
-        let posterURL = URL(string: baseURLString + posterPathString)!
-        
-        cell.posterImageView?.af_setImage(withURL: posterURL)
+        cell.posterImageView?.af_setImage(withURL: movie.posterURL!)
         
         return cell
     }
