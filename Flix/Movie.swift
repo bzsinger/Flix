@@ -1,0 +1,32 @@
+//
+//  Movie.swift
+//  Flix
+//
+//  Created by Benny Singer on 12/12/17.
+//  Copyright © 2017 bzsinger. All rights reserved.
+//
+
+import Foundation
+
+class Movie {
+    var title: String
+    var overview: String
+    var releaseDate: String
+    var posterURL: URL?
+    var backdropURL: URL?
+    
+    init(dictionary: [String: Any]) {
+        title = dictionary["title"] as? String ?? "No title"
+        overview = dictionary["overview"] as? String ?? "No overview"
+        releaseDate = dictionary["release_date"] as? String ?? "No release date"
+        
+        
+        let baseURLString = "https://image.tmdb.org/t/p/w500"
+        
+        let posterPathString = dictionary["poster_path"] as! String
+        posterURL = URL(string: baseURLString + posterPathString)!
+        
+        let backdropPathString = dictionary["backdrop_path"] as! String
+        backdropURL = URL(string: baseURLString + backdropPathString)!
+    }
+}
